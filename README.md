@@ -6,7 +6,7 @@ A lightweight single class component system for godot based on classes
 
 `Component` is an abstract `Node`. Attach subclasses as children of an
 entity; other components can then look each other up without manual
-references.ss
+references.
 
 ## Behavior
 

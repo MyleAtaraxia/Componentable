@@ -4,7 +4,11 @@ extends Node
 signal ProcessFinished
 signal PhysicsProcessFinished
 
-@export var active: bool = true
+@export var active: bool = true:
+	set(value):
+		active = value
+		set_process(value)
+		set_physics_process(value)
 
 @onready var parent = (func():
 	parent = get_parent()
@@ -47,12 +51,10 @@ static func get_component_on_node(node: Node, component: Script) -> Component:
 	return null
 
 func _process(delta: float) -> void:
-	if !active: return
 	process(delta)
 	ProcessFinished.emit()
 
 func _physics_process(delta: float) -> void:
-	if !active: return
 	physics_process(delta)
 	PhysicsProcessFinished.emit()
 
